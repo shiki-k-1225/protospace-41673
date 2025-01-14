@@ -1,0 +1,80 @@
+/* app/assets/stylesheets/application.scss */
+@import "comments";
+@import "prototypes";
+@import "users";
+@import "devise";
+
+// フラッシュメッセージのスタイル
+.flash {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+
+  &-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+  }
+
+  &-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+  }
+
+  &-alert {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+  }
+
+  &-notice {
+    background-color: #cce5ff;
+    color: #004085;
+    border-color: #b8daff;
+  }
+}
+
+// モバイル対応のスタイルを追加
+@media (max-width: 768px) {
+  .header, .nav, .main, .footer {
+    padding: 10px;
+  }
+
+  .header .logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .nav__btn {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .greeting {
+    font-size: 16px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .prototype-detail, .user-profile, .homepage {
+    padding: 15px;
+  }
+
+  .comments-section, .like-section, .prototype-info, .features {
+    padding: 10px;
+  }
+
+  .comment-form .form-group, .form-group {
+    margin-bottom: 10px;
+  }
+}

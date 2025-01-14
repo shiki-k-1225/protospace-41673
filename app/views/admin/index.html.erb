@@ -1,0 +1,14 @@
+<!-- app/views/admin/users/index.html.erb -->
+<div class="admin-user-list">
+  <h2>ユーザー管理</h2>
+  <% @users.each do |user| %>
+    <div class="user-item">
+      <h3><%= user.name %></h3>
+      <% if user.image.present? %>
+        <%= image_tag user.image.url(:thumb), alt: "#{user.name}のプロフィール画像" %>
+      <% end %>
+      <p>メールアドレス: <%= user.email %></p>
+      <p><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<!-- app/views/users/_form.html.erb -->
+<%= form_with model: @user, local: true do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :occupation, '職業' %>
+    <%= f.text_field :occupation %>
+  </div>
+
+  <div>
+    <%= f.label :profile, '自己紹介' %>
+    <%= f.text_area :profile %>
+  </div>
+
+  <div>
+    <%= f.label :avatar, 'プロフィール画像' %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div>
+    <%= f.submit '更新する' %>
+  </div>
+<% end %>

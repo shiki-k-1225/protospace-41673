@@ -1,0 +1,14 @@
+<!-- app/views/prototypes/_prototype.html.erb -->
+<div class="prototype-item">
+  <h3><%= link_to prototype.title, prototype_path(prototype) %></h3>
+  <p><%= prototype.catch_copy %></p>
+  <% if prototype.image.present? %>
+    <%= image_tag prototype.image.url %>
+  <% end %>
+  <p>投稿者: <%= link_to prototype.user.name, user_path(prototype.user) %></p>
+  <p><%= link_to '詳細を見る', prototype_path(prototype), class: 'btn btn-primary' %></p>
+  <p>いいね数: <%= prototype.likes_count %></p>
+  <% if prototype.user == current_user %>
+    <p><%= link_to '削除', prototype_path(prototype), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %></p>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+ja:
+  errors:
+    messages:
+      already_confirmed: "アカウントは既に確認済みです。"
+      confirmation_period_expired: "アカウントの確認期間が終了しています。"
+      expired: "期限が切れています。再度お試しください。"
+      not_found: "該当のユーザーが見つかりません。"
+      not_locked: "アカウントはロックされていません。"
+      taken: "この%{attribute}は既に使用されています。"

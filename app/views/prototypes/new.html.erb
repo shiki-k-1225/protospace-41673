@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Protospace41673</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "style" %>
+  <%= javascript_pack_tag "application", "data-turbo-track": "reload", type: "module" %>
+</head>
+<body>
+  <header class="header">
+    <div class="inner">
+      <img src="<%= asset_path 'logo.png' %>" alt="ロゴ画像" class="logo">
+      <nav class="nav">
+        <% if user_signed_in? %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: '本当にログアウトしますか？' }, class: 'nav__btn' %>
+          <%= link_to '新規プロトタイプ投稿', new_prototype_path, class: 'nav__btn' %>
+        <% else %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'nav__btn' %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav__btn' %>
+        <% end %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="inner">
+      <%= form_with(model: @prototype, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :catch_copy, "キャッチコピー" %>
+          <%= f.text_field :catch_copy, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :concept, "コンセプト" %>
+          <%= f.text_area :concept, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image, "画像" %>
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '投稿', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="copyright">
+      &copy; 2023 YourCompany. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

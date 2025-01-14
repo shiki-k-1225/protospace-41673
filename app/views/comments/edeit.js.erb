@@ -1,0 +1,4 @@
+// app/views/comments/edit.js.erb
+const commentContent = document.querySelector(`#comment-<%= @comment.id %> .comment-content`);
+const editForm = '<%= j render "form", comment: @comment %>';
+commentContent.innerHTML = editForm;

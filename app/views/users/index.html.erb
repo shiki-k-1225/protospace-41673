@@ -1,0 +1,12 @@
+<!-- app/views/users/index.html.erb -->
+<div class="user-list">
+  <h2>ユーザー一覧</h2>
+  <% @users.each do |user| %>
+    <div class="user-item">
+      <h3><%= link_to user.name, user_path(user) %></h3>
+      <% if user.image.present? %>
+        <%= image_tag user.image.url(:thumb), alt: "#{user.name}のプロフィール画像" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

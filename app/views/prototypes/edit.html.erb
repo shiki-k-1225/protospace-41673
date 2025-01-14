@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">プロトタイプ編集</h2>
+      <% if @prototype.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@prototype.errors.count, "error") %> prohibited this prototype from being saved:</h2>
+          <ul>
+            <% @prototype.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= render 'form', prototype: @prototype %>
+    </div>
+  </div>
+</div>

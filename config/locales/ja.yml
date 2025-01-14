@@ -1,0 +1,23 @@
+ja:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"
+      restrict_dependent_destroy:
+        has_one: "削除できません。関連付けられた%{record}が存在します。"
+        has_many: "削除できません。関連付けられた%{record}が存在します。"
+
+  devise:
+    failure:
+      unauthenticated: "ログインしてください。"
+      unconfirmed: "アカウントのメールアドレスが確認されていません。"
+      locked: "アカウントがロックされています。"
+      invalid: "メールアドレスまたはパスワードが間違っています。"
+      timeout: "セッションがタイムアウトしました。再度ログインしてください。"
+      inactive: "アカウントが無効になっています。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報が更新されました。"
+      destroyed: "アカウントが削除されました。"
+    passwords:
+      send_instructions: "パスワードの再設定方法をメールで送信しました。"
+      updated: "パスワードが変更されました。"

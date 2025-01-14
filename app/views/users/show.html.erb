@@ -1,0 +1,30 @@
+<!-- app/views/users/show.html.erb -->
+<div class="user-profile">
+  <h2><%= @user.name %>さんのプロフィール</h2>
+
+  <% if @user.avatar.present? %>
+    <%= image_tag @user.avatar.url, alt: "#{@user.name}のプロフィール画像", class: 'profile-image' %>
+  <% end %>
+
+  <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+  <p><strong>職業:</strong> <%= @user.occupation %></p>
+  <p><strong>自己紹介:</strong> <%= @user.profile %></p>
+
+  <div class="follow-section">
+    <%= render 'follow_form', user: @user %>
+  </div>
+
+  <h3>投稿したプロトタイプ一覧</h3>
+  <div class="prototype-list">
+    <% @prototypes.each do |prototype| %>
+      <div class="prototype-item">
+        <h4><%= link_to prototype.title, prototype_path(prototype) %></h4>
+        <% if prototype.image.attached? %>
+          <%= image_tag prototype.image %>
+        <% end %>
+        <p><%= prototype.catch_copy %></p>
+        <%= link_to '詳細を見る', prototype_path(prototype), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

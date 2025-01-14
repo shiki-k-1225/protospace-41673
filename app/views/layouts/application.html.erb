@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Protospace41673</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "style" %>
+  <%= javascript_pack_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (location.hash) {
+        document.getElementById(location.hash.slice(1)).scrollIntoView();
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="inner">
+      <img src="<%= asset_path 'logo.png' %>" alt="ロゴ画像" class="logo">
+      <nav class="nav">
+        <% if user_signed_in? %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: '本当にログアウトしますか？' }, class: 'nav__btn' %>
+          <%= link_to '新規プロトタイプ投稿', new_prototype_path, class: 'nav__btn' %>
+        <% else %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'nav__btn' %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav__btn' %>
+        <% end %>
+      </nav>
+      <!-- 検索フォームの追加 -->
+      <%= form_with(url: prototypes_path, method: :get, local: true) do %>
+        <%= text_field_tag :search, params[:search], placeholder: "プロトタイプを検索" %>
+        <%= submit_tag "検索", name: nil %>
+      <% end %>
+      <!-- 検索フォームここまで -->
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="inner">
+      <% if user_signed_in? %>
+        <div class="greeting">
+          こんにちは、<%= link_to current_user.name, root_path, class: :greeting__link %> さん
+        </div>
+      <% end %>
+      <%= yield %>
+
+      <% if notice %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+
+      <% if @prototype && @prototype.persisted? %>
+        <h2>コメント一覧</h2>
+        <% @prototype.comments.each do |comment| %>
+          <% if comment.user %>
+            <p><%= comment.user.name %>: <%= comment.content %></p>
+          <% else %>
+            <p>匿名ユーザー: <%= comment.content %></p>
+          <% end %>
+        <% end %>
+
+        <h2>コメントを投稿する</h2>
+        <%= form_with(model: [ @prototype, @prototype.comments.build ], local: true) do |f| %>
+          <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_area :content, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '投稿', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="flash flash-error"><%= flash[:error] %></div>
+      <% end %>
+      <% if flash[:success] %>
+        <div class="flash flash-success"><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="flash flash-alert"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="flash flash-notice"><%= flash[:notice] %></div>
+      <% end %>
+    </div>
+  </main>
+
+  <footer class=".footer">
+    <div class="copyright">
+      &copy; 2023 YourCompany. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

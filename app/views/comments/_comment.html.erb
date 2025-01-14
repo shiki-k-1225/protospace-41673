@@ -1,0 +1,12 @@
+<div class="comment" id="comment-<%= comment.id %>">
+  <p class="comment-user"><%= comment.user.name %></p>
+  <p class="comment-content"><%= comment.content %></p>
+  <p class="comment-time"><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+
+  <% if comment.user == current_user %>
+    <div class="comment-actions">
+      <%= link_to '編集', edit_prototype_comment_path(comment.prototype, comment), class: 'btn btn-secondary' %>
+      <%= link_to '削除', prototype_comment_path(comment.prototype, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+// app/views/comments/create.js.erb
+const commentsSection = document.querySelector('.comments-section');
+const newComment = '<%= j render @comment %>';
+commentsSection.insertAdjacentHTML('beforeend', newComment);
+
+document.querySelector('#comment_content').value = '';

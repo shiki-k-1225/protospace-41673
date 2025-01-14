@@ -1,0 +1,6 @@
+<!-- app/views/users/_follow_form.html.erb -->
+<% if current_user.following?(@user) %>
+  <%= link_to 'フォロー解除', relationship_path(@user), method: :delete, remote: true, class: 'btn btn-secondary' %>
+<% else %>
+  <%= link_to 'フォローする', relationships_path(followed_id: @user.id), method: :post, remote: true, class: 'btn btn-primary' %>
+<% end %>

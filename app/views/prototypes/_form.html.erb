@@ -1,0 +1,45 @@
+<%= form_with model: @prototype, local: true do |f| %>
+  <div class="form__wrapper">
+    <% if @prototype.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@prototype.errors.count, "error") %> prohibited this prototype from being saved:</h2>
+        <ul>
+          <% @prototype.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :title, 'プロトタイプ名' %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :catch_copy, 'キャッチコピー' %>
+      <%= f.text_area :catch_copy %>
+    </div>
+
+    <div>
+      <%= f.label :concept, 'コンセプト' %>
+      <%= f.text_area :concept %>
+    </div>
+
+    <div>
+      <%= f.label :image, '画像' %>
+      <%= f.file_field :image %>
+      <img id="image-preview" style="display:none; max-width: 100%;">
+    </div>
+
+    <!-- 追記するコード -->
+    <div>
+      <%= f.label :tag_list, 'タグ（カンマ区切り）' %>
+      <%= f.text_field :tag_list, class: 'form-control' %>
+    </div>
+
+    <div>
+      <%= f.submit '投稿する' %>
+    </div>
+  </div>
+<% end %>
