@@ -13,8 +13,6 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
-gem "image_processing", "~> 1.2"
-gem 'mini_magick'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -29,6 +27,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :production do
+  gem 'pg'
+end
+
+gem "image_processing", "~> 1.2"
+gem 'mini_magick'
 gem 'devise'
 gem "jsbundling-rails", "~> 1.3"
 gem 'kaminari'
@@ -37,3 +41,4 @@ gem 'carrierwave'
 gem 'sidekiq'
 gem 'sassc'
 gem 'will_paginate', '~> 3.3'
+

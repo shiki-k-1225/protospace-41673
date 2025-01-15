@@ -188,6 +188,7 @@ GEM
     nokogiri (1.18.0-x86_64-linux-musl)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.9)
     psych (5.2.2)
       date
       stringio
@@ -320,6 +321,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   mysql2 (~> 0.5)
+  pg
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.7)
   sassc
