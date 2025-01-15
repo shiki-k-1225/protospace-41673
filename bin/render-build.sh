@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Enable detailed logging
+set -ex
+
 # Install dependencies
 bundle install
 
